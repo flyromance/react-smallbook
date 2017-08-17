@@ -40,7 +40,7 @@ class Input extends Component {
             this.props.onSubmit && this.props.onSubmit({
                 name: this.state.name,
                 content: this.state.content,
-                date: new Date().toLocaleTimeString(),
+                date: +new Date(),
                 _id: Math.ceil(Math.random() * 100000000000)
             });
 

@@ -10,6 +10,9 @@ class Item extends Component {
     }
 
     render() {
+    	const date = this.props.comment.date;
+    	const interval = (new Date() - date) / 1000;
+    	const timeStr = 
         return (
             <div className="item">
                 <div className="item-user">{this.props.comment.name}</div>
