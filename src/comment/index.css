@@ -1,0 +1,106 @@
+.comment-box {
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 2px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+.comment-input {
+    margin-bottom: 30px;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    position: absolute;
+    top: 0;
+    left: 10px;
+    text-align: right;
+    width: 80px;
+    overflow: hidden;
+}
+
+.input-group .input {
+    padding-left: 100px;
+}
+
+.input-group input {
+    height: 30px;
+    display: block;
+    width: 350px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+.input-group textarea {
+    height: 150px;
+    display: block;
+    width: 350px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    padding: 0;
+}
+
+.btn-group {
+    text-align: right;
+}
+
+.btn {
+	padding: 5px 12px;
+	border: 1px solid #ddd;
+	border-radius: 5px;
+	cursor: pointer;
+	background-color: #fff;
+	outline: none;
+}
+
+.btn-default {
+	background-color: #ccc;
+	color: #333;
+}
+
+.btn-default:hover {
+	background-color: #333;
+	color: #ccc;
+}
+
+.btn-success {
+    background-color: #007fff;
+    color: #fff;
+}
+
+.comment-list .item {
+    position: relative;
+    line-height: 20px;
+}
+
+.item .item-content {
+    margin-left: 80px;
+    text-align: left;
+    position: relative;
+    padding-right: 20px;
+}
+
+.item-date {
+    text-align: right;
+}
+
+.item-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.item .item-user {
+    position: absolute;
+    overflow: hidden;
+    white-space: nowrap;
+    left: 10px;
+    top: 0px;
+    width: 40px;
+    color: blue;
+}

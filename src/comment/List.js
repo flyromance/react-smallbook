@@ -1,16 +1,29 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import Item from './Item'
 
 class List extends Component {
-    constructor() {
-        super();
+    static defaultProps = {
+        comments: []
+    }
+
+    static propTypes = {
+        comments: PropTypes.array.isRequired
+    }
+
+    constructor(props) {
+        super(props);
+    }
+
+    handleDelete(key) {
+        this.props.onDelete(key);
     }
 
     render() {
         return (
             <div className="comment-list">
-                {this.props.data.map((item, index) => {
-                    return <Item data={item} key={index} />
+                {this.props.comments.map((item, index) => {
+                    return <Item comment={item} key={index} onDelete={this.handleDelete.bind(this)}/>
                 })}
             </div>
         )

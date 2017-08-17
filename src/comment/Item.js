@@ -5,11 +5,19 @@ class Item extends Component {
     	super();
     }
 
+    handleDelete(e) {
+    	this.props.onDelete(this.props.comment._id);
+    }
+
     render() {
         return (
             <div className="item">
-                <div className="item-user">{this.props.data.name}</div>
-                <div className="item-content">{this.props.data.content}</div>
+                <div className="item-user">{this.props.comment.name}</div>
+                <div className="item-content">
+                	<p>{this.props.comment.content}</p>
+                	<div className="item-date">{this.props.comment.date}</div>
+                </div>
+                <div className="item-close" onClick={this.handleDelete.bind(this)}>X</div>
             </div>
         )
     }  
