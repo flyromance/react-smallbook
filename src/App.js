@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Comment from './comment/Index';
+import Theme from './theme-connect/Index'
 window.React = React;
 
 class LikeButton extends Component {
@@ -110,7 +111,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isShow: false,
+      isShowList: false,
       isShowClock: true,
       list: ['fanlong', 'flyromance', 'fandisaier']
     }
@@ -118,7 +119,7 @@ class App extends Component {
 
   handleShowOrHide() {
     this.setState({
-      isShow: !this.state.isShow
+      isShowList: !this.state.isShowList
     });
   }
 
@@ -135,7 +136,6 @@ class App extends Component {
   }
 
   render() {
-    const commentList = [{name: '1231', content: 'lasdflsd;'}];
     const title = '<h1>this is title</h1>';
     return (
       <div className="App">
@@ -143,21 +143,23 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h2>hello react!</h2>
         </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+
         <div>{title}</div>
         <div dangerouslySetInnerHTML={{__html: title}}></div>
-        <div><button onClick={this.toggleClock.bind(this)}>{this.state.isShowClock ? 'hide clock' : 'show clock'}</button></div>
-        {this.state.isShowClock ? <Clock /> : null }
-        <LikeButton likeText='已赞' unLikeText='赞' />
+
         <div>
-          <button onClick={this.handleShowOrHide.bind(this)}>{this.state.isShow ? 'hide' : 'show'}</button>
-          <button onClick={this.handleAddItem.bind(this)}>add item</button>
+          <LikeButton likeText='已赞' unLikeText='赞' />
+          <button onClick={this.toggleClock.bind(this)}>{this.state.isShowClock ? 'hide clock' : 'show clock'}</button>
+          <button onClick={this.handleShowOrHide.bind(this)}>{this.state.isShowList ? 'hide list' : 'show list'}</button>
+          { this.state.isShowList ? <button onClick={this.handleAddItem.bind(this)}>add item</button> : null }
         </div>
-        { this.state.isShow ? <List list={this.state.list} /> : null }
+        { this.state.isShowClock ? <Clock /> : null }
+        { this.state.isShowList ? <List list={this.state.list} /> : null }
         <div className="comment-container">
-          <Comment data={commentList}/>
+          <Comment />
+        </div>
+        <div>
+          <Theme />
         </div>
       </div>
     );

@@ -12,6 +12,10 @@ class Input extends Component {
         content: PropTypes.string
     }
 
+    static contextTypes = {
+        themeColor: PropTypes.string
+    }
+
     constructor(props) {
         super(props);
         this.state = {
@@ -40,8 +44,7 @@ class Input extends Component {
             this.props.onSubmit && this.props.onSubmit({
                 name: this.state.name,
                 content: this.state.content,
-                date: +new Date(),
-                _id: Math.ceil(Math.random() * 100000000000)
+                date: +new Date()
             });
 
             // 改变本组件的状态：清空输入的评论内容
@@ -68,6 +71,7 @@ class Input extends Component {
     }
 
     render() {
+        console.log(this.context.themeColor);
         return (
             <div className="comment-input">
                 <div className="input-group">

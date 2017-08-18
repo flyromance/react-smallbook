@@ -15,15 +15,16 @@ class List extends Component {
         super(props);
     }
 
-    handleDelete(key) {
-        this.props.onDelete(key);
+    handleDelete(i) {
+        this.props.onDelete && this.props.onDelete(i);
     }
 
     render() {
+        console.log(this.context.themeColor);
         return (
             <div className="comment-list">
-                {this.props.comments.map((item, index) => {
-                    return <Item comment={item} key={index} onDelete={this.handleDelete.bind(this)}/>
+                {this.props.comments.map((item, i) => {
+                    return <Item comment={item} index={i} key={i} onDelete={this.handleDelete.bind(this)}/>
                 })}
             </div>
         )

@@ -1,14 +1,25 @@
 import React, { Component } from 'react'
 import Input from './Input'
 import List from './List'
+import PropTypes from 'prop-types'
 
 import './index.css';
 
 class Comment extends Component {
+	static childContextTypes = {
+		themeColor: PropTypes.string
+	}
+
 	constructor(props) {
 		super(props);
 		this.state = {
 			comments: [],
+		}
+	}
+
+	getClildContext() {
+		return {
+			themeColor: 'green'
 		}
 	}
 
@@ -22,37 +33,22 @@ class Comment extends Component {
 		this.setState({comments});
 	}
 
-	_saveComments(item, isAdd) {
-		var comments = this.state.comments;
-
-		if (isAdd === false) {
-			// 删除
-			comments.splice(item, 1);
-		} else {
-			comments.push(item);			
-		}
-
+	_saveComments(comments) {
 		localStorage.setItem('comments', JSON.stringify(comments));
-		
-		this.setState({
-			comments: comments
-		});
 	}
 
 	handleSubmitComment(item) {
-		this._saveComments(item);
+		var comments = this.state.comments;
+		comments.push(item);
+		this._saveComments(comments);
+		this.setState({comments});
 	}
 
-	handleDeleteComment(key) {
-		var index;
-		this.state.comments.forEach(function (item, i) {
-			if (item._id === key) {
-				index = i;
-				return false;
-			}
-		});
-		console.log(index);
-		this._saveComments(index, false);
+	handleDeleteComment(index) {
+		var comments = this.state.comments;
+		comments.splice(index, 1);
+		this._saveComments(comments);
+		this.setState({comments});
 	}
 
 	render() {
